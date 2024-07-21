@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-kernel:
+    name: Build Kernel
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build
+        uses: dabao1955/kernel_build_action@main
+        with:
+          kernel-url: https://github.com/silime/android_kernel_lenovo_sm8250
+          kernel-branch: android-11
+          config: paladin_prc_wifi-perf_defconfig
+          arch: arm64
+          android-version: 11
+          # aosp
+          # aosp-gcc: true
+          # aosp-clang: true
+          # aosp-clang-version: r383902
+          # ndk
+          # android-ndk: true
+          # android-ndk-version: 	r23b
+          other-clang-url: https://github.com/sticpaper/Snapdragon-LLVM-ARM-Compiler-10.0.7-for-Android-NDK
+          other-clang-branch: main
+          anykernel3: true
+          bootimg-url: https://github.com/silime/KernelSU_Action_Q706Z/releases/download/boot/boot.img
+          release: true
+          access-token: ${{ secrets.GITHUB_TOKEN }}
