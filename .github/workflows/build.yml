@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Build
-        uses: silime/kernel_build_action@test
+        uses: silime/kernel_build_action@main
         with:
           kernel-url: https://github.com/silime/android_kernel_lenovo_sm8250
           kernel-branch: android-11
