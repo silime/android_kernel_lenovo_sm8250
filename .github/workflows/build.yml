@@ -13,7 +13,7 @@ jobs:
         with:
           kernel-url: https://github.com/silime/android_kernel_lenovo_sm8250
           kernel-branch: android-11
-          config: paladin_prc_wifi-perf_defconfig
+          config: vendor/paladin_prc_wifi-perf_defconfig
           arch: arm64
           android-version: 11
           # aosp
