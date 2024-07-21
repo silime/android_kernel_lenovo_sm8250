@@ -9,13 +9,14 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Build
-        uses: dabao1955/kernel_build_action@main
+        uses: silime/kernel_build_action@test
         with:
           kernel-url: https://github.com/silime/android_kernel_lenovo_sm8250
           kernel-branch: android-11
           config: vendor/paladin_prc_wifi-perf_defconfig
           arch: arm64
           android-version: 11
+          ccache: true
           # aosp
           # aosp-gcc: true
           # aosp-clang: true
