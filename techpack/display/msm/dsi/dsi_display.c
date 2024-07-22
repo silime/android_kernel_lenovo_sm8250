@@ -231,7 +231,8 @@ int dsi_display_set_backlight(struct drm_connector *connector,
 		       dsi_display->name, rc);
 		goto error;
 	}
-
+	DSI_INFO("bl_lvl = %u, hbm =%u\n",
+		(u32)bl_temp, hbm);
 	rc = dsi_panel_set_backlight(panel, (u32)bl_temp, hbm);
 	if (rc)
 		DSI_ERR("unable to set backlight\n");

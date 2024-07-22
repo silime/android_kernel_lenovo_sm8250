@@ -1064,22 +1064,32 @@ int mipi_dsi_dcs_set_display_brightness(struct mipi_dsi_device *dsi,
 	u8 payload_hbm_off[1] = { 0x28 }; /* 0x20:Normal mode + Smooth dimming off; 0x28: Normal mode + Smooth dimming on */
 
 	ssize_t err;
+	
+	dev_dbg(&dsi->dev, "Setting brightness: %u, hbm: %u\n", brightness, hbm);
 
-	if(hbm) {
+	if (hbm) {
+		dev_dbg(&dsi->dev, "Setting brightness: HBM Mode\n");
 		err = mipi_dsi_dcs_write(dsi, SAMSUNG_BRIGHTNESS_MODE,
 					 payload_hbm_on, sizeof(payload_hbm_on));
-		if (err < 0)
+		if (err < 0) {
+			dev_err(&dsi->dev, "Failed to set HBM Mode: %zd\n", err);
 			return err;
+		}
 	} else {
+		dev_dbg(&dsi->dev, "Setting brightness: Normal Mode\n");
 		err = mipi_dsi_dcs_write(dsi, SAMSUNG_BRIGHTNESS_MODE,
 					 payload_hbm_off, sizeof(payload_hbm_off));
-		if (err < 0)
+		if (err < 0) {
+			dev_err(&dsi->dev, "Failed to set Normal Mode: %zd\n", err);
 			return err;
+		}
 
 		err = mipi_dsi_dcs_write(dsi, MIPI_DCS_SET_DISPLAY_BRIGHTNESS,
 					 payload, sizeof(payload));
-		if (err < 0)
+		if (err < 0) {
+			dev_err(&dsi->dev, "Failed to set brightness: %zd\n", err);
 			return err;
+		}
 	}
 
 	return 0;
