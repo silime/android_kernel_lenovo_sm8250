@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2016-2020, The Linux Foundation. All rights reserved.
  */
-
+#define DEBUG
 #include <linux/list.h>
 #include <linux/of.h>
 #include <linux/of_gpio.h>

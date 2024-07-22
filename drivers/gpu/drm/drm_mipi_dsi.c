@@ -24,7 +24,7 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
+#define DEBUG
 #include <drm/drm_mipi_dsi.h>
 
 #include <linux/device.h>
