@@ -1076,13 +1076,13 @@ int mipi_dsi_dcs_set_display_brightness(struct mipi_dsi_device *dsi,
 			return err;
 		}
 	} else {
-		dev_info(&dsi->dev, "Setting brightness: Normal Mode Smooth dimming on\n");
-		err = mipi_dsi_dcs_write(dsi, SAMSUNG_BRIGHTNESS_MODE,
-					 payload_hbm_off, sizeof(payload_hbm_off));
-		if (err < 0) {
-			dev_err(&dsi->dev, "Failed to set Normal Mode: %zd\n", err);
-			return err;
-		}
+		dev_info(&dsi->dev, "Setting brightness \n");
+		// err = mipi_dsi_dcs_write(dsi, SAMSUNG_BRIGHTNESS_MODE,
+		// 			 payload_hbm_off, sizeof(payload_hbm_off));
+		// if (err < 0) {
+		// 	dev_err(&dsi->dev, "Failed to set Normal Mode: %zd\n", err);
+		// 	return err;
+		// }
 
 		err = mipi_dsi_dcs_write(dsi, MIPI_DCS_SET_DISPLAY_BRIGHTNESS,
 					 payload, sizeof(payload));
